@@ -12,6 +12,7 @@ import * as SecureStore from 'expo-secure-store'
 export default class S1 extends React.Component {
     constructor(props){
         super(props);
+        this.refresh=null
         this.state = {
             data:[]
         }
@@ -27,12 +28,13 @@ export default class S1 extends React.Component {
         })
         console.log(JSON.parse(await SecureStore.getItemAsync("Notes")))
     }
-    deleteNote=async()=>{
+    deleteNote=async(id)=>{
         const Notes = JSON.parse(await SecureStore.getItemAsync("Notes"))
         Notes.map(async(el)=>{
-            if(el.date==this.props.date)
-                console.log(Notes.filter(ele=>ele!=el))
+            if(el.date==id){
+                console.log(el)
                 await SecureStore.setItemAsync("Notes",JSON.stringify(Notes.filter(ele=>ele!=el)))
+            }
         })
         this.setState({
             data:JSON.parse(await SecureStore.getItemAsync("Notes"))
