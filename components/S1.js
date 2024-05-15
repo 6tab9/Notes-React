@@ -8,7 +8,7 @@ import {
 import Button from './Button';
 import Note from './Note'
 import * as SecureStore from 'expo-secure-store'
-const months = ["STY","LUT","MAR","KWI","MAJ","CZE","LIP","SIE","WRZ","PAŹ","LIS","GRU"]
+
 export default class S1 extends React.Component {
     constructor(props){
         super(props);
@@ -33,12 +33,9 @@ export default class S1 extends React.Component {
                 <FlatList
                     numColumns="2"
                     data={this.state.data}
-                    renderItem={({ item }) => <Note color={item.color} text={item.text} title={item.title} date={be_normal(item.date)}></Note>}
+                    renderItem={({ item }) => <Note color={item.color} text={item.text} title={item.title} date={item.date}></Note>}
                 />
             </View>
         )
     }
-}
-function be_normal(date){
-    return `${new Date(date).getDate()} ${months[new Date(date).getMonth()]}`
 }
