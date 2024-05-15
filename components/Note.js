@@ -6,19 +6,12 @@ import {
     TouchableOpacity,
     Pressable
 } from 'react-native';
-import * as SecureStore from 'expo-secure-store'
 const months = ["STY","LUT","MAR","KWI","MAJ","CZE","LIP","SIE","WRZ","PAŹ","LIS","GRU"]
 export default class Note extends React.Component {
     render(){
         return(
             <View style={{backgroundColor:this.props.color,padding:46,flex:1,margin:10}}>
-                <Pressable onLongPress={async()=>{
-                    const Notes = JSON.parse(await SecureStore.getItemAsync("Notes"))
-                    Notes.map(el=>{
-                        if(el.date==this.props.date)
-                            console.log(el)
-                    })
-                }}>
+                <Pressable onLongPress={this.props.delete}>
                     <Text style={styles.date}>{be_normal(this.props.date)}</Text>
                     <Text style={styles.title}>{this.props.title}</Text>
                     <Text>{this.props.text}</Text>

@@ -27,13 +27,24 @@ export default class S1 extends React.Component {
         })
         console.log(JSON.parse(await SecureStore.getItemAsync("Notes")))
     }
+    deleteNote=async()=>{
+        const Notes = JSON.parse(await SecureStore.getItemAsync("Notes"))
+        Notes.map(async(el)=>{
+            if(el.date==this.props.date)
+                console.log(Notes.filter(ele=>ele!=el))
+                await SecureStore.setItemAsync("Notes",JSON.stringify(Notes.filter(ele=>ele!=el)))
+        })
+        this.setState({
+            data:JSON.parse(await SecureStore.getItemAsync("Notes"))
+        })
+    }
     render() {
         return (
             <View>
                 <FlatList
                     numColumns="2"
                     data={this.state.data}
-                    renderItem={({ item }) => <Note color={item.color} text={item.text} title={item.title} date={item.date}></Note>}
+                    renderItem={({ item }) => <Note color={item.color} text={item.text} title={item.title} date={item.date} delete={this.deleteNote}></Note>}
                 />
             </View>
         )

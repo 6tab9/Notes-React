@@ -17,6 +17,7 @@ const add = async () =>{
 export default class S2 extends React.Component {
 constructor(props) {
     super(props);
+    this.refresh = null
     this.state = {
         text:''
     };
