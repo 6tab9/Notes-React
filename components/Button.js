@@ -21,7 +21,7 @@ export default class Button extends React.Component {
 }
 const style = StyleSheet.create({
     main:{
-        backgroundColor:"rgba(7,126,34,255)",
+        backgroundColor:"grey",
         borderRadius:10,
         padding:5,
         color:"white",
