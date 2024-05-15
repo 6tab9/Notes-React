@@ -7,7 +7,6 @@ import {
     Pressable,
     Alert
 } from 'react-native';
-import * as SecureStore from 'expo-secure-store'
 const months = ["STY","LUT","MAR","KWI","MAJ","CZE","LIP","SIE","WRZ","PAŹ","LIS","GRU"]
 export default class Note extends React.Component {
     render(){
