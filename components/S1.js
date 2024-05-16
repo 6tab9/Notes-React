@@ -26,13 +26,11 @@ export default class S1 extends React.Component {
         this.setState({
             data:JSON.parse(await SecureStore.getItemAsync("Notes"))
         })
-        console.log(JSON.parse(await SecureStore.getItemAsync("Notes")))
     }
     deleteNote=async(id)=>{
         const Notes = JSON.parse(await SecureStore.getItemAsync("Notes"))
         Notes.map(async(el)=>{
             if(el.date==id){
-                console.log(el)
                 await SecureStore.setItemAsync("Notes",JSON.stringify(Notes.filter(ele=>ele!=el)))
             }
         })
